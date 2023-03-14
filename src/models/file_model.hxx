@@ -4,6 +4,12 @@
 
 class FileModel : public Model {
  public:
+  enum class Type {
+    Folder,
+    File,
+  };
+
+ public:
   FileModel(Driver& driver);
   virtual ~FileModel();
 
@@ -15,6 +21,7 @@ class FileModel : public Model {
   UBigIntField id;
   StringField name;
   UUIDField uuid;
-  TinyIntField type;
+  TinyEnumField<Type> type;
+  // TinyIntField type;
   UUIDField parent_uuid;
 };

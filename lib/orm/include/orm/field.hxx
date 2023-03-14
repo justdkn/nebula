@@ -4,6 +4,7 @@
 #include <type_traits>
 #include "field_tpl.hxx"
 #include "type/uuid.hxx"
+#include "type/enum.hxx"
 
 using TinyIntField   = FieldTpl<int8_t, MYSQL_TYPE_TINY>;
 using UTinyIntField  = FieldTpl<uint8_t, MYSQL_TYPE_TINY>;
@@ -17,3 +18,5 @@ using FloatField     = FieldTpl<float, MYSQL_TYPE_LONGLONG>;
 using BoolField      = FieldTpl<bool, MYSQL_TYPE_BOOL>;
 using StringField    = FieldTpl<std::string, MYSQL_TYPE_STRING>;
 using UUIDField      = FieldTpl<UUID, MYSQL_TYPE_TINY_BLOB>;
+template <class E>
+using TinyEnumField = FieldTpl<Enum<E, int8_t>, MYSQL_TYPE_TINY>;

@@ -3,7 +3,13 @@
 #include <orm/orm.hxx>
 #include "db.hxx"
 #include "exception.hxx"
+#include "models/file_model.hxx"
 #include <iostream>
+
+enum class Type {
+  Folder,
+  File,
+};
 
 namespace file_manager {
 std::optional<FileModel> get(UUID uuid) {
@@ -25,7 +31,7 @@ std::optional<FileModel> create_folder(std::optional<UUID> parent_uuid,
   file.uuid        = UUID();
   file.uuid->generate();
   file.name = name;
-  file.type = FILE_TYPE_FOLDER;
+  file.type = FileModel::Type::Folder;
   if (!file.save()) return std::nullopt;
   return file;
 }
