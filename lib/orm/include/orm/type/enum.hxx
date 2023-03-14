@@ -1,8 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <type_traits>
 
-template <class E, typename T>
+template <typename E, typename T>
+concept EnumCheck = std::is_same_v<typename std::underlying_type<E>::type, T>;
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
 class Enum {
  public:
   Enum();

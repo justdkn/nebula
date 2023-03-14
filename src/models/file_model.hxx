@@ -4,7 +4,7 @@
 
 class FileModel : public Model {
  public:
-  enum class Type {
+  enum class Type : uint8_t {
     Folder,
     File,
   };
@@ -21,7 +21,6 @@ class FileModel : public Model {
   UBigIntField id;
   StringField name;
   UUIDField uuid;
-  TinyEnumField<Type> type;
-  // TinyIntField type;
+  EnumField<Type> type;
   UUIDField parent_uuid;
 };
