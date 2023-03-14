@@ -74,6 +74,8 @@ ModelQuery<T>& ModelQuery<T>::query() {
   results_.resize(fields_.size());
   for (auto i = 0; i < results_.size(); ++i) {
     fields_[i]->to_result(results_[i]);
+    // 需要绑定一下is_null, 否则fetch时无法获取is_null_value
+    results_[i].is_null = &results_[i].is_null_value;
   }
   if (stmt_.bind_result(results_.data()) != 0)
     throw OrmException(stmt_.error_str());

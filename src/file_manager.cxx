@@ -15,6 +15,7 @@ namespace file_manager {
 std::optional<FileModel> get(UUID uuid) {
   return Query<FileModel>(get_db()).get(EQ("uuid", uuid));
 }
+
 std::optional<FileModel> create_folder(std::optional<UUID> parent_uuid,
                                        const char* name) {
   std::optional<FileModel> parent_folder;
@@ -34,5 +35,15 @@ std::optional<FileModel> create_folder(std::optional<UUID> parent_uuid,
   file.type = FileModel::Type::Folder;
   if (!file.save()) return std::nullopt;
   return file;
+}
+
+std::vector<FileModel> folder_list(std::optional<UUID> parent_uuid) {
+  std::optional<FileModel> parent_folder;
+  if (parent_uuid) {
+    parent_folder = get(parent_uuid.value());
+    if (!parent_folder)
+      throw FileManagerException("parent folder is not exists");
+  }
+  return Query<FileModel>(get_db()).get_all(EQ("parent_uuid", parent_uuid));
 }
 };  // namespace file_manager

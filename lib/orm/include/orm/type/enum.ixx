@@ -51,13 +51,14 @@ Enum<E, T>& Enum<E, T>::operator=(const T value) {
 template <typename E, typename T>
 requires EnumCheck<E, T>
 std::ostream& Enum<E, T>::operator>>(std::ostream& out) const {
-  out << value_;
+  out << +value_;
   return out;
 }
 
 // clang-format on
 
 template <typename E, typename T>
-std::ostream& operator<<(std::ostream& out, const Enum<E, T>& Enum) {
+std::ostream& operator<<(std::ostream& out, const Enum<E, T>& value) {
+  value >> out;
   return out;
 }

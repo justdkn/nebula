@@ -52,7 +52,10 @@ std::optional<T> Query<T>::get(const QueryWhere where) {
 template <class T>
 std::vector<T> Query<T>::get_all(const QueryWhere where) {
   ModelQuery<T> query(driver_);
-  query.limit(limit_start_, limit_count_).order_by(order_).query();
+  query.limit(limit_start_, limit_count_)
+      .where(&where)
+      .order_by(order_)
+      .query();
   std::vector<T> datas;
   while (query.fetch()) {
     datas.push_back(query.model());
