@@ -1,4 +1,5 @@
 #include "file_model.hxx"
+#include <dotenv.hxx>
 
 FileModel::FileModel(Driver& driver)
     : Model(driver, "file"),

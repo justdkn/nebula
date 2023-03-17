@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
 
-
 project(mdb)
 add_library(mdb STATIC
     src/statment.cxx

@@ -16,4 +16,6 @@ target_link_libraries(nebula
     PRIVATE
     mdb
     orm
+    dotenv
 )
+file(COPY .env DESTINATION ${PROJECT_BINARY_DIR})

@@ -43,9 +43,52 @@ Enum<E, T>& Enum<E, T>::operator=(const Enum value) {
 
 template <typename E, typename T>
 requires EnumCheck<E, T>
+Enum<E, T>& Enum<E, T>::operator=(const E value) {
+  value_ = static_cast<T>(value);
+  return *this;
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
 Enum<E, T>& Enum<E, T>::operator=(const T value) {
   value_ = value;
   return *this;
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator==(const Enum value) const {
+  return value_ == value.value_;
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator==(const E value) const {
+  return value_ == static_cast<T>(value);
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator==(const T value) const {
+  return value_ == value;
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator!=(const Enum value) const {
+  return value_ != value.value_;
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator!=(const E value) const {
+  return value_ != static_cast<T>(value);
+}
+
+template <typename E, typename T>
+requires EnumCheck<E, T>
+bool Enum<E, T>::operator!=(const T value) const {
+  return value_ != value;
 }
 
 template <typename E, typename T>

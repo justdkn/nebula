@@ -18,7 +18,14 @@ class Enum {
  public:
   const T& value() const;
   Enum& operator=(const Enum value);
+  Enum& operator=(const E value);
   Enum& operator=(const T value);
+  bool operator==(const Enum value) const;
+  bool operator==(const E value) const;
+  bool operator==(const T value) const;
+  bool operator!=(const Enum value) const;
+  bool operator!=(const E value) const;
+  bool operator!=(const T value) const;
   std::ostream& operator>>(std::ostream& out) const;
 
  private:
