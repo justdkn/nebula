@@ -109,7 +109,7 @@ int main() {
   auto files = FileManager::list(std::nullopt);
   for (auto& file : files) {
     std::cout << file << std::endl;
-    if (file.type && file.type.value() == FileModel::Type::File) {
+    if (file.type && file.type.value() == File::Type::File) {
       std::cout << "path: " << FileManager::get_file_path(file) << std::endl;
     }
   }
@@ -119,7 +119,7 @@ int main() {
     auto download_files = FileManager::list(files[0].uuid);
     for (auto& file : download_files) {
       std::cout << file << std::endl;
-      if (file.type && file.type.value() == FileModel::Type::File) {
+      if (file.type && file.type.value() == File::Type::File) {
         std::cout << "path: " << FileManager::get_file_path(file) << std::endl;
       }
     }

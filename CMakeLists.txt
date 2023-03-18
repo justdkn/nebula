@@ -10,7 +10,7 @@ add_executable(nebula
     src/main.cxx
     src/db.cxx
     src/file_manager.cxx
-    src/models/file_model.cxx
+    src/models/file.cxx
 )
 target_link_libraries(nebula
     PRIVATE

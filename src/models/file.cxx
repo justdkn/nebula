@@ -1,7 +1,7 @@
-#include "file_model.hxx"
+#include "file.hxx"
 #include <dotenv.hxx>
 
-FileModel::FileModel(Driver& driver)
+File::File(Driver& driver)
     : Model(driver, "file"),
       id("id"),
       name("name"),
@@ -10,13 +10,13 @@ FileModel::FileModel(Driver& driver)
       parent_uuid("parent_uuid") {
 }
 
-FileModel::~FileModel() {
+File::~File() {
 }
 
-const UBigIntField* FileModel::primary_key() const {
+const UBigIntField* File::primary_key() const {
   return &id;
 }
 
-const std::vector<const FieldBase*> FileModel::fields() const {
+const std::vector<const FieldBase*> File::fields() const {
   return {&id, &uuid, &parent_uuid, &type, &name};
 }

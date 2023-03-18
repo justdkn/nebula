@@ -2,7 +2,7 @@
 
 #include <orm/orm.hxx>
 
-class FileModel : public Model {
+class File : public Model {
  public:
   enum class Type : uint8_t {
     Folder,
@@ -10,8 +10,8 @@ class FileModel : public Model {
   };
 
  public:
-  FileModel(Driver& driver);
-  virtual ~FileModel();
+  File(Driver& driver);
+  virtual ~File();
 
  public:
   virtual const UBigIntField* primary_key() const;
