@@ -8,8 +8,8 @@ add_subdirectory(lib)
 project(nebula)
 add_executable(nebula
     src/main.cxx
-    src/db.cxx
-    src/file_manager.cxx
+    src/common/db.cxx
+    src/logic/file_logic.cxx
     src/models/file.cxx
 )
 target_link_libraries(nebula

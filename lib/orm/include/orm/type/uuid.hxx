@@ -22,6 +22,8 @@ class UUID {
   UUID& operator=(const char* s);
   UUID& operator=(std::string_view s);
   UUID& operator=(const uuid_t uuid);
+  bool operator==(const UUID& uuid) const;
+  bool operator!=(const UUID& uuid) const;
   std::ostream& operator>>(std::ostream& out) const;
 
  private:

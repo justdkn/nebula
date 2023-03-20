@@ -1,6 +1,7 @@
 #pragma once
 
 #include <orm/orm.hxx>
+#include <string>
 
 class File : public Model {
  public:
@@ -16,6 +17,9 @@ class File : public Model {
  public:
   virtual const UBigIntField* primary_key() const;
   virtual const std::vector<const FieldBase*> fields() const;
+
+ public:
+  std::string path() const;
 
  public:
   UBigIntField id;

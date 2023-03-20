@@ -63,6 +63,14 @@ UUID& UUID::operator=(const uuid_t uuid) {
   return *this;
 }
 
+bool UUID::operator==(const UUID& uuid) const {
+  return compare(uuid) == 0;
+}
+
+bool UUID::operator!=(const UUID& uuid) const {
+  return compare(uuid) != 0;
+}
+
 std::ostream& UUID::operator>>(std::ostream& out) const {
   out << to_string();
   return out;
